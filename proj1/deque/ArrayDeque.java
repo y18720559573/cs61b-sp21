@@ -57,7 +57,7 @@ public class ArrayDeque <T>  {
 
     /** Gets the ith item in the list (0 is the front). */
     public T get (int index) {
-        if (index > 0 && index <= size) {
+        if (index >= 0 && index <= size) {
             if (front + index < array.length) {
                 return array[front + index];
             }
@@ -76,19 +76,22 @@ public class ArrayDeque <T>  {
     /** Deletes item from back of the list and
      * returns deleted item. */
     public T removeLast () {
-        if (back == 0) {
-            T last = array[array.length - 1];
-            array[array.length - 1] = null;
-            back = array.length - 1;
-            size = size - 1;
-            return last;
-        }
+        if (size == 0) return null;
         else {
-            T last = array[back - 1];
-            array[back - 1] = null;
-            back = back - 1;
-            size = size - 1;
-            return last;
+            if (back == 0) {
+                T last = array[array.length - 1];
+                array[array.length - 1] = null;
+                back = array.length - 1;
+                size = size - 1;
+                return last;
+            }
+            else {
+                T last = array[back - 1];
+                array[back - 1] = null;
+                back = back - 1;
+                size = size - 1;
+                return last;
+            }
         }
     }
 
@@ -109,19 +112,22 @@ public class ArrayDeque <T>  {
     }
 
     public T removeFirst () {
-        if (front == array.length-1) {
-            T first = array[0];
-            array[0] = null;
-            front = 0;
-            size = size - 1;
-            return first;
-        }
+        if (size == 0) return null;
         else {
-            T first = array[front+1];
-            array[front+1] = null;
-            front = front + 1;
-            size = size - 1;
-            return first;
+            if (front == array.length-1) {
+                T first = array[0];
+                array[0] = null;
+                front = 0;
+                size = size - 1;
+                return first;
+            }
+            else {
+                T first = array[front+1];
+                array[front+1] = null;
+                front = front + 1;
+                size = size - 1;
+                return first;
+            }
         }
     }
 
