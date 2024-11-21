@@ -51,10 +51,6 @@ public class ArrayDeque <T> implements Deque<T> {
         }
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
     /** Gets the ith item in the list (0 is the front). */
     public T get (int index) {
         if (index >= 0 && index <= size) {
